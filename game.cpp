@@ -18,7 +18,7 @@
 Game::Game()
     :
     Context(),
-    m_flow( 0.25f )
+    m_flow( 0.1f )
 {
 }
 
@@ -50,14 +50,14 @@ Game::init()
     vp->bounds().x = 1280.0f;
     vp->bounds().y = 720.0f;
     vp->setAngle( 0.0f );
-    vp->setScale( 1.0f );
+    vp->setScale( 100.0f );
 
     _initArena();
 
     Engine::instance()->setMouse("cursor");
     Engine::instance()->showMouse();
 
-    m_flow = 0.25f;
+    m_flow = 0.1f;
 }
 
 //------------------------------------------------------------------------------
@@ -85,10 +85,14 @@ Game::update( float dt )
     m_flow -= dt;
     if ( m_flow < 0.0f )
     {
-        m_flow = 0.25f;
+        m_flow = 0.1f;
         Droplet * droplet( static_cast< Droplet * >( Engine::em()->factory( Droplet::TYPE ) ) );
-        droplet->setScale( 0.03f );
+        droplet->setScale( 0.003f );
         droplet->init();
+        b2Vec2 position( Engine::hge()->Random_Float( -0.02f, 0.02f ),
+                         Engine::hge()->Random_Float( -0.02f, 0.02f ) );
+        droplet->getBody()->SetXForm( position, 0.0f );
+        
     }
 
     return false;
@@ -173,7 +177,7 @@ Game::_initArena()
         girder->setScale( 1.0f );
         girder->setDimensions( dimensions );
         girder->init();
-        girder->getBody()->SetXForm( position, 0.0f );
+        girder->getBody()->SetXForm( 0.1f * position, 0.0f );
     }
 }
 

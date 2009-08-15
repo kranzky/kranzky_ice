@@ -58,9 +58,9 @@ Droplet::onSetScale()
     }
     b2CircleDef shapeDef;
     shapeDef.radius = 0.5f * 0.5f * m_sprite->GetWidth() * m_scale;
-    shapeDef.density = 1.0f;
-    shapeDef.friction =0.0f;
-    shapeDef.restitution = 0.3f;
+    shapeDef.density = 0.1f;
+    shapeDef.friction = 0.4f;
+    shapeDef.restitution = 0.7f;
     m_body->CreateShape( & shapeDef );
     m_body->SetMassFromShapes();
 }
