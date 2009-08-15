@@ -10,6 +10,10 @@ Texture cursor
 {
     filename=cursor.png
 }
+Texture droplet
+{
+    filename=droplet.png
+}
 Font menu
 {
     filename=menu.fnt
@@ -33,6 +37,12 @@ Sprite developer
 Sprite cursor
 {
     texture=cursor
+    rect=0,0,32,32
+    hotspot=16,16
+}
+Sprite droplet
+{
+    texture=droplet
     rect=0,0,32,32
     hotspot=16,16
 }

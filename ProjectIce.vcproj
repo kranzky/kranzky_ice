@@ -220,6 +220,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\droplet.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\engine.hpp"
 				>
 			</File>
@@ -233,6 +237,10 @@
 			</File>
 			<File
 				RelativePath=".\game.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\girder.hpp"
 				>
 			</File>
 			<File
@@ -274,10 +282,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\ProjectIce.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\config.cpp"
 				>
 			</File>
@@ -316,6 +320,10 @@
 						Detect64BitPortabilityProblems="false"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\droplet.cpp"
+				>
 			</File>
 			<File
 				RelativePath=".\engine.cpp"
@@ -366,6 +374,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\girder.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\menu.cpp"
 				>
 			</File>
@@ -375,6 +387,10 @@
 			</File>
 			<File
 				RelativePath=".\mouse.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ProjectIce.cpp"
 				>
 			</File>
 			<File

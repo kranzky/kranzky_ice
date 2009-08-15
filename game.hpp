@@ -28,6 +28,9 @@ class Game : public Context
     virtual void render();
 
   private:
+    void _initArena();
+
+    float m_flow;
 };
 
 #endif

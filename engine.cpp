@@ -825,7 +825,7 @@ Engine::_initPhysics()
     b2AABB worldAABB;
     worldAABB.lowerBound.Set( -2500.0f, -2500.0f );
     worldAABB.upperBound.Set( 2500.0f, 2500.0f );
-    b2Vec2 gravity( 0.0f, 0.0f );
+    b2Vec2 gravity( 0.0f, 10.0f );
     m_b2d = new b2World( worldAABB, gravity, true );
     m_dd = new DebugDraw( m_hge, m_vp );
     m_b2d->SetDebugDraw( m_dd );
