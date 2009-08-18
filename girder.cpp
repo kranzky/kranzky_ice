@@ -81,6 +81,7 @@ Girder::doInit()
 {
     b2PolygonDef shapeDef;
     shapeDef.SetAsBox( m_dimensions.x * m_scale, m_dimensions.y * m_scale );
+	shapeDef.friction = 0.0f;
     b2BodyDef bodyDef;
     bodyDef.userData = static_cast< void * >( this );
     m_body = Engine::b2d()->CreateStaticBody( & bodyDef );

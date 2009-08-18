@@ -31,6 +31,7 @@ class Game : public Context
     void _initArena();
 
     float m_flow;
+    int m_count;
 };
 
 #endif

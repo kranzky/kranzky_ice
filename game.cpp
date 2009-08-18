@@ -14,11 +14,18 @@
 #include <algorithm>
 #include <set>
 
+namespace
+{
+    static const float FLOW( 0.01f );
+    static const int MAX_COUNT( 500 );
+}
+
 //==============================================================================
 Game::Game()
     :
     Context(),
-    m_flow( 0.1f )
+    m_flow( FLOW ),
+    m_count( 0 )
 {
 }
 
@@ -57,7 +64,8 @@ Game::init()
     Engine::instance()->setMouse("cursor");
     Engine::instance()->showMouse();
 
-    m_flow = 0.1f;
+    m_flow = FLOW;
+    m_count = 0;
 }
 
 //------------------------------------------------------------------------------
@@ -76,23 +84,22 @@ Game::update( float dt )
     HGE * hge( Engine::hge() );
     ViewPort * vp( Engine::vp() );
 
-    if ( Engine::instance()->isPaused() )
+    if ( Engine::instance()->isPaused() || m_count >= MAX_COUNT )
     {
         return false;
     }
 
     // TODO: if mouse down, spawn droplet at certain rate
     m_flow -= dt;
-    if ( m_flow < 0.0f )
+    while ( m_flow  < 0.0f && m_count < MAX_COUNT )
     {
-        m_flow = 0.1f;
+        m_flow += FLOW;
+        m_count += 1;
         Droplet * droplet( static_cast< Droplet * >( Engine::em()->factory( Droplet::TYPE ) ) );
-        droplet->setScale( 0.003f );
+        droplet->setScale( 0.001f );
         droplet->init();
-        b2Vec2 position( Engine::hge()->Random_Float( -0.02f, 0.02f ),
-                         Engine::hge()->Random_Float( -0.02f, 0.02f ) );
+        b2Vec2 position( Engine::hge()->Random_Float( -0.001f, 0.001f ) + 1.0f, 1.0f );
         droplet->getBody()->SetXForm( position, 0.0f );
-        
     }
 
     return false;
@@ -120,9 +127,11 @@ Game::render()
         }
     }
 
-    Engine::vp()->reset();
-    vp->setTransform();
+    vp->reset();
 
+    char message[8];
+    sprintf_s( message, "%03d", m_count );
+    font->printf( 100.0f, 10.0f, HGETEXT_CENTER, message );
 }
 
 //------------------------------------------------------------------------------
@@ -145,6 +154,7 @@ Game::_initArena()
                 dimensions.y = 0.1f;
                 position.x = 0.0f;
                 position.y = -36.1f;
+				continue;
                 break;
             }
             case 1:

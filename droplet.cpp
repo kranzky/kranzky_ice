@@ -58,9 +58,9 @@ Droplet::onSetScale()
     }
     b2CircleDef shapeDef;
     shapeDef.radius = 0.5f * m_sprite->GetWidth() * m_scale;
-    shapeDef.density = 0.1f;
-    shapeDef.friction = 0.4f;
-    shapeDef.restitution = 0.7f;
+    shapeDef.density = 0.0001f;
+    shapeDef.friction = 0.0f;
+    shapeDef.restitution = 0.6f;
     m_body->CreateShape( & shapeDef );
     m_body->SetMassFromShapes();
 }
@@ -74,7 +74,7 @@ Droplet::doInit()
     bodyDef.allowSleep = true;
     bodyDef.userData = static_cast< void * >( this );
     m_body = Engine::b2d()->CreateDynamicBody( & bodyDef );
-    m_body->m_linearDamping = 0.8f;
+    m_body->m_linearDamping = 0.0f;
     onSetScale();
 }
 
