@@ -43,6 +43,5 @@ Sprite cursor
 Sprite droplet
 {
     texture=droplet
-    rect=0,0,32,32
-    hotspot=16,16
+    rect=0,0,320,320
 }

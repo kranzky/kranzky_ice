@@ -17,7 +17,7 @@
 namespace
 {
     static const float FLOW( 0.01f );
-    static const int MAX_COUNT( 500 );
+    static const int MAX_COUNT( 250 );
 }
 
 //==============================================================================
@@ -96,9 +96,9 @@ Game::update( float dt )
         m_flow += FLOW;
         m_count += 1;
         Droplet * droplet( static_cast< Droplet * >( Engine::em()->factory( Droplet::TYPE ) ) );
-        droplet->setScale( 0.001f );
+        droplet->setScale( 0.0015f );
         droplet->init();
-        b2Vec2 position( Engine::hge()->Random_Float( -0.001f, 0.001f ) + 1.0f, 1.0f );
+        b2Vec2 position( Engine::hge()->Random_Float( -0.01f, 0.01f ) + 1.0f, 1.0f );
         droplet->getBody()->SetXForm( position, 0.0f );
     }
 
